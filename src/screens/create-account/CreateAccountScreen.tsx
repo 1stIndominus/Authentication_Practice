@@ -1,11 +1,5 @@
-import React, {useState} from 'react';
-import {
-  View,
-  Text,
-  TouchableOpacity,
-  StyleSheet,
-  SafeAreaView,
-} from 'react-native';
+import React, {useState, FC} from 'react';
+import {View, Text, TouchableOpacity, SafeAreaView} from 'react-native';
 import Logo from '../../assets/icons/LogoFiPay.svg';
 import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
 import {Checkbox} from '../../components/checkbox/Checkbox';
@@ -13,15 +7,19 @@ import {SignInButton} from '../../components/buttons/SignInButton';
 import {PasswordInput} from '../../components/input/PasswordInput';
 import {EmailInput} from '../../components/input/EmailInput';
 import {NamedInput} from '../../components/input/NamedInput';
+import {styles} from './styles';
+import {useNavigation} from '@react-navigation/native';
 
-export const CreateAccountScreen = ({navigation}) => {
+export const CreateAccountScreen: FC = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [checked, setChecked] = React.useState(false);
   const [showPassword, setShowPassword] = useState(true);
   const [name, setName] = useState('');
 
-  const ACTIVE_BUTTON = email || password || name;
+  const {navigate} = useNavigation<any>();
+
+  const DISABLE_BUTTON = email !== '' || password !== '' || name !== '';
 
   return (
     <SafeAreaView style={styles.container}>
@@ -58,11 +56,15 @@ export const CreateAccountScreen = ({navigation}) => {
           </View>
         </View>
 
-        <SignInButton active={ACTIVE_BUTTON} text="Create Account" />
+        <SignInButton
+          active={DISABLE_BUTTON}
+          text="Create Account"
+          goTo="Verification"
+        />
 
         <View style={styles.signUpcontainer}>
           <Text style={styles.signInText}>Already have an account? </Text>
-          <TouchableOpacity onPress={() => navigation.navigate('Sign In')}>
+          <TouchableOpacity onPress={() => navigate('Sign In')}>
             <Text style={styles.resetPassText}>Sign in</Text>
           </TouchableOpacity>
         </View>
@@ -70,59 +72,3 @@ export const CreateAccountScreen = ({navigation}) => {
     </SafeAreaView>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    paddingHorizontal: 24,
-  },
-  mainTitleContainer: {
-    justifyContent: 'center',
-    marginTop: 60,
-    marginBottom: 40,
-  },
-  mainTitle: {
-    fontFamily: 'SourceSansPro-SemiBold',
-    fontSize: 33,
-    color: '#394452',
-  },
-  navBarContainer: {
-    height: 48,
-    justifyContent: 'center',
-    alignItems: 'flex-start',
-    marginTop: 12,
-  },
-  signInText: {
-    color: '#858C94',
-    fontFamily: 'SourceSansPro-Regular',
-  },
-  signUpcontainer: {
-    marginTop: 40,
-    justifyContent: 'center',
-    alignItems: 'center',
-    flexDirection: 'row',
-  },
-  resetPassText: {
-    color: '#6D5FFD',
-    fontFamily: 'SourceSansPro-SemiBold',
-    fontSize: 16,
-    lineHeight: 24,
-  },
-  checkboxWrapper: {
-    marginBottom: 20,
-    marginTop: 20,
-    height: 40,
-    flexDirection: 'row',
-    justifyContent: 'flex-start',
-  },
-  checkboxText: {
-    color: '#2C3A4B',
-    fontSize: 14,
-    fontFamily: 'SourceSansPro-Regular',
-  },
-  highlightedText: {
-    color: '#6D5FFD',
-    fontSize: 14,
-    fontFamily: 'SourceSansPro-Regular',
-  },
-});

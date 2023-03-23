@@ -1,9 +1,9 @@
 import React from 'react';
-// import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {CreateAccountScreen} from '../screens/create-account/CreateAccountScreen';
 import {SignInScreen} from '../screens/sign-in/SignInScreen';
-
+import {VerificationScreen} from '../screens/verification/VerificationScreen';
+import {CountryRegionScreen} from '../screens/region/CountryRegionScreen';
 const Stack = createNativeStackNavigator();
 
 export const MainNavigation = () => {
@@ -12,18 +12,22 @@ export const MainNavigation = () => {
       <Stack.Screen
         name="Sign In"
         component={SignInScreen}
-        options={{
-          headerTransparent: true,
-          header: ({navigation}) => {},
-        }}
+        options={{headerShown: false}}
       />
       <Stack.Screen
         name="Create Account"
         component={CreateAccountScreen}
-        options={{
-          headerTransparent: true,
-          header: ({navigation}) => {},
-        }}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="Verification"
+        component={VerificationScreen}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="Country/Region"
+        component={CountryRegionScreen}
+        options={{headerShown: false}}
       />
     </Stack.Navigator>
   );

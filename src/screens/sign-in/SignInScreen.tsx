@@ -6,16 +6,19 @@ import {styles} from './styles';
 import {Checkbox} from '../../components/checkbox/Checkbox';
 import {PasswordInput} from '../../components/input/PasswordInput';
 import {EmailInput} from '../../components/input/EmailInput';
+import {useNavigation} from '@react-navigation/native';
 
 import Logo from '../../assets/icons/LogoFiPay.svg';
 
-export const SignInScreen: FC = ({navigation}) => {
+export const SignInScreen: FC = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [checked, setChecked] = React.useState(false);
   const [showPassword, setShowPassword] = useState(true);
 
-  const ACTIVE_BUTTON = email || password;
+  const {navigate} = useNavigation<any>();
+
+  const DISABLE_BUTTON = email !== '' || password !== '';
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.navBarContainer}>
@@ -45,15 +48,14 @@ export const SignInScreen: FC = ({navigation}) => {
             <Text style={styles.checkboxText}>Remember me</Text>
           </View>
 
-          <SignInButton active={ACTIVE_BUTTON} text="Sign in" />
+          <SignInButton active={DISABLE_BUTTON} text="Sign in" goTo={''} />
           <TouchableOpacity style={styles.resetPassword}>
             <Text style={styles.resetPassText}>Forgot the password?</Text>
           </TouchableOpacity>
 
           <View style={styles.signUpcontainer}>
             <Text style={styles.signUpText}>Don't have an account? </Text>
-            <TouchableOpacity
-              onPress={() => navigation.navigate('Create Account')}>
+            <TouchableOpacity onPress={() => navigate('Create Account')}>
               <Text style={styles.resetPassText}>Sign up</Text>
             </TouchableOpacity>
           </View>

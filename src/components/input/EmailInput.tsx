@@ -1,12 +1,5 @@
 import React, {FC} from 'react';
-import {
-  View,
-  Text,
-  TouchableOpacity,
-  StyleSheet,
-  TextInput,
-  Keyboard,
-} from 'react-native';
+import {View, Text, StyleSheet, TextInput} from 'react-native';
 import {useDebounce} from 'use-debounce';
 import Reguired from '../../assets/icons/RequiredAsterisk.svg';
 import AllertIcon from '../../assets/icons/Alert.svg';

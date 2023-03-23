@@ -6,6 +6,7 @@ export const styles = StyleSheet.create({
     paddingHorizontal: 24,
     flexDirection: 'column',
     justifyContent: 'space-between',
+    backgroundColor: '#fff',
   },
   navBarContainer: {
     height: 48,
