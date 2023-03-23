@@ -31,7 +31,7 @@ const styles = StyleSheet.create({
   },
   buttonText: {
     color: '#fff',
-    fontWeight: '600',
+    fontFamily: 'SourceSansPro-SemiBold',
     fontSize: 18,
   },
   signInActiveButton: {

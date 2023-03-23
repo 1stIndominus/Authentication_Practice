@@ -10,8 +10,8 @@ import {
 } from 'react-native';
 import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
 import {useDebounce} from 'use-debounce';
+import {SignInButton} from '../components/buttons/SignInButton';
 
-// import {TextInput} from 'react-native-paper';
 import Wrong from '../assets/icons/Error.svg';
 import Done from '../assets/icons/Round.svg';
 import Reguired from '../assets/icons/RequiredAsterisk.svg';
@@ -19,7 +19,6 @@ import Logo from '../assets/icons/LogoFiPay.svg';
 import AllertIcon from '../assets/icons/Alert.svg';
 import Eye from '../assets/icons/Eye.svg';
 import Verified from '../assets/icons/Done.svg';
-import {SignInButton} from '../components/buttons/SignInButton';
 
 export const SignIn: FC = () => {
   const [email, setEmail] = useState('');
@@ -167,6 +166,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 24,
     flexDirection: 'column',
     justifyContent: 'space-between',
+    // backgroundColor: 'yellow',
   },
   navBarContainer: {
     height: 48,
@@ -177,6 +177,7 @@ const styles = StyleSheet.create({
   checkboxWrapper: {
     marginBottom: 20,
     marginTop: 20,
+    width: 100,
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'flex-start',
@@ -201,7 +202,7 @@ const styles = StyleSheet.create({
   checkboxText: {
     color: '#2C3A4B',
     fontSize: 14,
-    fontWeight: '600',
+    fontFamily: 'SourceSansPro-SemiBold',
   },
   inputContainer: {
     flexDirection: 'row',
@@ -234,9 +235,9 @@ const styles = StyleSheet.create({
   inputText: {
     color: '#2C3A4B',
     fontSize: 16,
-    fontWeight: '600',
     marginLeft: 16,
     marginBottom: 8,
+    fontFamily: 'SourceSansPro-SemiBold',
   },
   reguired: {
     marginTop: 4,
@@ -253,8 +254,8 @@ const styles = StyleSheet.create({
   },
   title: {
     color: '#394452',
-    fontWeight: '600',
     fontSize: 33,
+    fontFamily: 'SourceSansPro-SemiBold',
   },
   highlightTitle: {
     color: '#6D5FFD',
@@ -266,7 +267,7 @@ const styles = StyleSheet.create({
   },
   resetPassText: {
     color: '#6D5FFD',
-    fontWeight: '600',
+    fontFamily: 'SourceSansPro-SemiBold',
     fontSize: 16,
     lineHeight: 24,
   },
@@ -278,6 +279,7 @@ const styles = StyleSheet.create({
   },
   signUpText: {
     color: '#858C94',
+    fontFamily: 'SourceSansPro-Regular',
   },
   wrongPasswordContainer: {
     flexDirection: 'row',
@@ -291,6 +293,8 @@ const styles = StyleSheet.create({
   wrongPasswordText: {
     color: '#DA1414',
     marginLeft: 4,
+    fontSize: 14,
+    fontFamily: 'SourceSansPro-Regular',
   },
   spacer: {
     marginLeft: 15,
