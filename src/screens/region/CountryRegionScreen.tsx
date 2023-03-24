@@ -1,38 +1,63 @@
-import React, { useState } from 'react';
+import React, {useState} from 'react';
 import {
   View,
   Text,
-  TouchableOpacity,
   SafeAreaView,
   StyleSheet,
-  TextInput,
   TouchableWithoutFeedback,
   Keyboard,
 } from 'react-native';
 import {SignInButton} from '../../components/buttons/SignInButton';
-import {NamedInput} from '../../components/input/NamedInput';
+import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
+import {NoErrorInput} from '../../components/input/NoErrorInput';
+import {StateInput} from '../../components/input/StateInput';
 
 import Logo from '../../assets/icons/LogoFiPay.svg';
 
 export const CountryRegionScreen = () => {
+  const [country, setCountry] = useState('');
+  const [state, setState] = useState('');
   const [street, setStreet] = useState('');
+  const [city, setCity] = useState('');
+
+  const DISABLE_BUTTON = !country || !state || !street || !city;
   return (
     <SafeAreaView style={styles.container}>
-      <View style={styles.navBarContainer}>
-        <Logo width={24} height={24} />
-      </View>
+      <KeyboardAwareScrollView>
+        <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+          <>
+            <View style={styles.navBarContainer}>
+              <Logo width={24} height={24} />
+            </View>
 
-      <Text style={styles.title}>Create a new account</Text>
-      <View style={styles.spacer}>
-        <NamedInput
-          title={'Street'}
-          invalidText={'Invalid Street'}
-          name={street}
-          setName={setStreet}
-        />
-      </View>
+            <Text style={styles.title}>Create a new account</Text>
 
-      <SignInButton active={false} text="Sign in" goTo={''} />
+            <StateInput
+              title={'Country/Region'}
+              name={country}
+              setName={setCountry}
+            />
+
+            <View style={styles.stateWrapper}>
+              <View style={styles.inputs}>
+                <StateInput title={'State'} name={state} setName={setState} />
+              </View>
+              <View style={styles.inputs}>
+                <NoErrorInput title={'City'} name={city} setName={setCity} />
+              </View>
+            </View>
+
+            <NoErrorInput title={'Street'} name={street} setName={setStreet} />
+            <View style={styles.spacer} />
+
+            <SignInButton
+              active={!DISABLE_BUTTON}
+              text="Create Account"
+              goTo={'Home'}
+            />
+          </>
+        </TouchableWithoutFeedback>
+      </KeyboardAwareScrollView>
     </SafeAreaView>
   );
 };
@@ -54,8 +79,18 @@ const styles = StyleSheet.create({
     fontSize: 33,
     fontFamily: 'SourceSansPro-SemiBold',
     marginBottom: 40,
+    marginTop: 100,
   },
   spacer: {
     marginBottom: 20,
+  },
+  stateWrapper: {
+    flexDirection: 'row',
+    // marginRight: 20,
+    justifyContent: 'space-between',
+  },
+  inputs: {
+    width: '47%',
+    // marginRight: 20,
   },
 });

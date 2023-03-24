@@ -34,7 +34,7 @@ export const styles = StyleSheet.create({
     fontSize: 23,
   },
   buttonWrapper: {
-    // marginBottom: 50,
+    marginTop: 260,
     // justifyContent: 'flex-end',
   },
   text: {

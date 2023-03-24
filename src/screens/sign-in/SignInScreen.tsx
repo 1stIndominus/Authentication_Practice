@@ -18,7 +18,11 @@ export const SignInScreen: FC = () => {
 
   const {navigate} = useNavigation<any>();
 
-  const DISABLE_BUTTON = email !== '' || password !== '';
+  const emailAndPhonrRegexp =
+    /(^[\w.%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$)|(\+?)\d+[0-9\-)(\s)]{8,16}(?:\d)/gi;
+
+  const DISABLE_BUTTON =
+    emailAndPhonrRegexp.test(email) && /[\w]{8}/.test(password);
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.navBarContainer}>
@@ -48,7 +52,7 @@ export const SignInScreen: FC = () => {
             <Text style={styles.checkboxText}>Remember me</Text>
           </View>
 
-          <SignInButton active={DISABLE_BUTTON} text="Sign in" goTo={''} />
+          <SignInButton active={DISABLE_BUTTON} text="Sign in" goTo={'Home'} />
           <TouchableOpacity style={styles.resetPassword}>
             <Text style={styles.resetPassText}>Forgot the password?</Text>
           </TouchableOpacity>

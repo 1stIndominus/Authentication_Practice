@@ -19,7 +19,15 @@ export const CreateAccountScreen: FC = () => {
 
   const {navigate} = useNavigation<any>();
 
-  const DISABLE_BUTTON = email !== '' || password !== '' || name !== '';
+  const nameRegexp = /[a-zA-Z]{2,}[\s][a-zA-Z]{2,}/gi.test(name);
+  const passwordValidation = /[\w]{8}/.test(password);
+  const emailAndPhonrRegexp =
+    /(^[\w.%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$)|(\+?)\d+[0-9\-)(\s)]{8,16}(?:\d)/gi.test(
+      email,
+    );
+
+  const DISABLE_BUTTON =
+    nameRegexp && passwordValidation && emailAndPhonrRegexp;
 
   return (
     <SafeAreaView style={styles.container}>

@@ -4,7 +4,6 @@ import {
   Text,
   TouchableOpacity,
   SafeAreaView,
-  StyleSheet,
   TextInput,
   TouchableWithoutFeedback,
   Keyboard,
@@ -100,17 +99,17 @@ export const VerificationScreen: FC = () => {
                 />
               </View>
             </View>
+            <View style={styles.buttonWrapper}>
+              <SignInButton
+                text={'Next'}
+                active={!DISABLE_BUTTON}
+                goTo={'Country/Region'}
+              />
+            </View>
+            <Text style={styles.text}>Resend code in {seconds} s</Text>
           </>
         </TouchableWithoutFeedback>
       </KeyboardAwareScrollView>
-      <View style={styles.buttonWrapper}>
-        <SignInButton
-          text={'Next'}
-          active={!DISABLE_BUTTON}
-          goTo={'Country/Region'}
-        />
-      </View>
-      <Text style={styles.text}>Resend code in {seconds} s</Text>
     </SafeAreaView>
   );
 };
