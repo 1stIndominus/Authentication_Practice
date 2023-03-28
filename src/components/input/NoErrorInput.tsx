@@ -1,14 +1,21 @@
 import React, {FC} from 'react';
 import {View, Text, StyleSheet, TextInput} from 'react-native';
 import Reguired from '../../assets/icons/RequiredAsterisk.svg';
+import Verified from '../../assets/icons/Done.svg';
 
 interface Props {
   title: string;
   name: string;
   setName: (args: string) => void;
+  confirmIcon?: boolean;
 }
 
-export const NoErrorInput: FC<Props> = ({title, name, setName}) => {
+export const NoErrorInput: FC<Props> = ({
+  title,
+  name,
+  setName,
+  confirmIcon,
+}) => {
   return (
     <View style={styles.inputWrapper}>
       <View style={styles.inputLabel}>
@@ -20,6 +27,7 @@ export const NoErrorInput: FC<Props> = ({title, name, setName}) => {
 
       <View style={styles.inputContainer}>
         <TextInput onChangeText={setName} value={name} style={styles.input} />
+        {confirmIcon && <Verified />}
       </View>
     </View>
   );

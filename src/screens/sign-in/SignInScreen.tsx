@@ -53,7 +53,9 @@ export const SignInScreen: FC = () => {
           </View>
 
           <SignInButton active={DISABLE_BUTTON} text="Sign in" goTo={'Home'} />
-          <TouchableOpacity style={styles.resetPassword}>
+          <TouchableOpacity
+            style={styles.resetPassword}
+            onPress={() => navigate('Forgot password')}>
             <Text style={styles.resetPassText}>Forgot the password?</Text>
           </TouchableOpacity>
 
