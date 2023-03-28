@@ -12,7 +12,7 @@ import {SignInButton} from '../../components/buttons/SignInButton';
 import GoBack from '../../assets/icons/Goback.svg';
 import {useNavigation} from '@react-navigation/native';
 import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
-import {styles} from './styles';
+import {styles} from './VerificationStyles';
 export const VerificationScreen: FC = () => {
   const pin1Ref = useRef(null);
   const pin2Ref = useRef(null);

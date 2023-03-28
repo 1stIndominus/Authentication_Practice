@@ -21,6 +21,8 @@ export const CountryRegionScreen = () => {
   const [city, setCity] = useState('');
 
   const DISABLE_BUTTON = !country || !state || !street || !city;
+  const isStateIconVisible = state.length === 0;
+  const isCountryIconVisible = state.length === 0;
   return (
     <SafeAreaView style={styles.container}>
       <KeyboardAwareScrollView>
@@ -33,6 +35,7 @@ export const CountryRegionScreen = () => {
             <Text style={styles.title}>Create a new account</Text>
 
             <StateInput
+              isVisible={isCountryIconVisible}
               title={'Country/Region'}
               name={country}
               setName={setCountry}
@@ -40,7 +43,12 @@ export const CountryRegionScreen = () => {
 
             <View style={styles.stateWrapper}>
               <View style={styles.inputs}>
-                <StateInput title={'State'} name={state} setName={setState} />
+                <StateInput
+                  isVisible={isStateIconVisible}
+                  title={'State'}
+                  name={state}
+                  setName={setState}
+                />
               </View>
               <View style={styles.inputs}>
                 <NoErrorInput title={'City'} name={city} setName={setCity} />

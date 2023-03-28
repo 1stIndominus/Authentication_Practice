@@ -47,6 +47,7 @@ export const CreateAccountScreen: FC = () => {
         />
         <EmailInput setEmail={setEmail} email={email} />
         <PasswordInput
+          title={'Password'}
           setShowPassword={setShowPassword}
           showPassword={showPassword}
           setPassword={setPassword}

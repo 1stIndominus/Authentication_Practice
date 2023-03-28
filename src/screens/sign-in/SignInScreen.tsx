@@ -13,8 +13,8 @@ import Logo from '../../assets/icons/LogoFiPay.svg';
 export const SignInScreen: FC = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [checked, setChecked] = React.useState(false);
   const [showPassword, setShowPassword] = useState(true);
+  const [checked, setChecked] = React.useState(false);
 
   const {navigate} = useNavigation<any>();
 
@@ -41,6 +41,7 @@ export const SignInScreen: FC = () => {
           <EmailInput email={email} setEmail={setEmail} />
 
           <PasswordInput
+            title={'Password'}
             setShowPassword={setShowPassword}
             showPassword={showPassword}
             setPassword={setPassword}

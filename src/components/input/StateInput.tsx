@@ -13,9 +13,10 @@ interface Props {
   title: string;
   name: string;
   setName: (args: string) => void;
+  isVisible?: boolean;
 }
 
-export const StateInput: FC<Props> = ({title, name, setName}) => {
+export const StateInput: FC<Props> = ({title, name, setName, isVisible}) => {
   return (
     <View style={styles.inputWrapper}>
       <View style={styles.inputLabel}>
@@ -27,9 +28,7 @@ export const StateInput: FC<Props> = ({title, name, setName}) => {
 
       <View style={styles.inputContainer}>
         <TextInput onChangeText={setName} value={name} style={styles.input} />
-        <TouchableOpacity>
-          <ArrowDown />
-        </TouchableOpacity>
+        <TouchableOpacity>{isVisible && <ArrowDown />}</TouchableOpacity>
       </View>
     </View>
   );
