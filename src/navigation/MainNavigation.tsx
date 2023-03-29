@@ -9,6 +9,7 @@ import {SuccessScreen} from '../screens/forgot-password/SuccessScreen';
 import {NewPasswordScreen} from '../screens/forgot-password/NewPasswordScreen';
 import {MainTabContainer} from '../navigation/MainContainer';
 import {NavigationContainer} from '@react-navigation/native';
+import {TransactionHistoryScreen} from '../screens/statistics/TransactionHistoryScreen';
 
 const Stack = createNativeStackNavigator();
 
@@ -54,6 +55,11 @@ export const MainNavigation = () => {
         <Stack.Screen
           name="New password"
           component={NewPasswordScreen}
+          options={{headerShown: false}}
+        />
+        <Stack.Screen
+          name="Transaction history"
+          component={TransactionHistoryScreen}
           options={{headerShown: false}}
         />
       </Stack.Navigator>

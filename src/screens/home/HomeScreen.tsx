@@ -8,14 +8,20 @@ import {
 } from 'react-native';
 import {CreditCardComponent} from '../../components/credit-card/CreditCardComponent';
 import {BillCardComponent} from '../../components/bill-list/BillCardComponent';
+import {useNavigation} from '@react-navigation/native';
+
 import Clock from '../../assets/icons/Clock.svg';
+
 export const HomeScreen = () => {
+  const {navigate} = useNavigation<any>();
   return (
     <>
       <SafeAreaView style={styles.container}>
         <View style={styles.navBar}>
           <Text style={styles.text}>Good morning, John!</Text>
-          <Clock />
+          <TouchableOpacity onPress={() => navigate('Transaction history')}>
+            <Clock />
+          </TouchableOpacity>
         </View>
         <CreditCardComponent />
 
@@ -37,7 +43,6 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#fff',
-    // paddingHorizontal: 24,
   },
   billContainer: {
     flex: 1,
@@ -52,9 +57,6 @@ const styles = StyleSheet.create({
     marginBottom: 24,
     paddingHorizontal: 24,
   },
-  bottomBar: {
-    backgroundColor: 'yellow',
-  },
   text: {
     color: '#2C3A4B',
     fontFamily: 'SourceSansPro-SemiBold',
@@ -67,7 +69,6 @@ const styles = StyleSheet.create({
     marginBottom: 20,
   },
   titleContainer: {
-    // paddingHorizontal: 24,
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
