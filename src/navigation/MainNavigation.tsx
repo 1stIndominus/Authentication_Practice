@@ -17,6 +17,11 @@ export const MainNavigation = () => {
     <NavigationContainer>
       <Stack.Navigator>
         <Stack.Screen
+          name="Home"
+          component={MainTabContainer}
+          options={{headerShown: false}}
+        />
+        <Stack.Screen
           name="Sign In"
           component={SignInScreen}
           options={{headerShown: false}}
@@ -34,11 +39,6 @@ export const MainNavigation = () => {
         <Stack.Screen
           name="Country/Region"
           component={CountryRegionScreen}
-          options={{headerShown: false}}
-        />
-        <Stack.Screen
-          name="Home"
-          component={MainTabContainer}
           options={{headerShown: false}}
         />
         <Stack.Screen
