@@ -28,7 +28,9 @@ export const StateInput: FC<Props> = ({title, name, setName, isVisible}) => {
 
       <View style={styles.inputContainer}>
         <TextInput onChangeText={setName} value={name} style={styles.input} />
-        <TouchableOpacity>{isVisible && <ArrowDown />}</TouchableOpacity>
+        <TouchableOpacity>
+          {isVisible && <ArrowDown fill={'#858C94'} />}
+        </TouchableOpacity>
       </View>
     </View>
   );
