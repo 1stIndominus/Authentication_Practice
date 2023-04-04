@@ -17,13 +17,13 @@ export const MainNavigation = () => {
   return (
     <Stack.Navigator>
       <Stack.Screen
-        name="Sign In"
-        component={SignInScreen}
+        name="Home"
+        component={MainTabContainer}
         options={{headerShown: false}}
       />
       <Stack.Screen
-        name="Home"
-        component={MainTabContainer}
+        name="Sign In"
+        component={SignInScreen}
         options={{headerShown: false}}
       />
       <Stack.Screen

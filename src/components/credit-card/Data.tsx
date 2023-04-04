@@ -20,3 +20,14 @@ export const payingBills = [
   {id: 6, name: 'Wifi bills'},
   {id: 7, name: 'Wifi bills'},
 ];
+
+export const payingHistory = [
+  {id: 1, name: 'Buy a shoes', price: '100.00'},
+  {id: 2, name: 'Buy a shoes', price: '100.00'},
+  {id: 3, name: 'Design salary', price: '150.00'},
+  {id: 4, name: 'Design salary', price: '150.00'},
+  {id: 5, name: 'Design salary', price: '200.00'},
+  {id: 6, name: 'Design salary', price: '200.00'},
+  {id: 7, name: 'Christmas gifts', price: '120.00'},
+  {id: 8, name: 'Christmas gifts', price: '120.00'},
+];
